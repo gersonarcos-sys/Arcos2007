@@ -6,13 +6,17 @@ using namespace std;
 
 class Vehiculo{
 protected:
-string placa;
+ string placa;
+ Propietario propietario;
+
 public:
 Vehiculo(string placa);
 virtual ~Vehiculo();
 virtual string getTipo() const = 0;
 string getPlaca() const;
-void setPlaca();
+void setPlaca(string placa);
+void setPropietario(Propietario* prop);
+Propietario* getPropietario() const;
 virtual string info()const;
 virtual int cobrar() const; 
 };
