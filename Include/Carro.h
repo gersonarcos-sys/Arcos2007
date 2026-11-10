@@ -3,13 +3,14 @@
 
 class Carro: public Vehiculo{
 private:
-int pasajeros;
+ int pasajeros;
 public:
-Carro (string placa, int pasajeros);
-~Carro();
-void setPasajeros(int pasajeros);
-int getPasajeros() const;
-string info() const override;
-int cobrar()  const override;
+ Carro (string placa, int pasajeros);
+ ~Carro();
+ void setPasajeros(int pasajeros);
+ int getPasajeros() const;
+ string getTipo() const;
+ string info() const override;
+ int cobrar()  const override;
 
 };

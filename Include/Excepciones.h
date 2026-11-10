@@ -6,8 +6,16 @@ using namespace std;
 
 class PlacaInvalidaException: public exception {
 private:
-string msj;
+ string msj;
 public:
-PlacaInvalidaException(string msj);
-const char* what() const noexcept override;
+ PlacaInvalidaException(string msj);
+ const char* what() const noexcept override;
+};
+
+class DatosInvalidosException : public exception {
+private:
+ string msj;
+public:
+ DatosInvalidosException(string msj);
+ const char* what() const noexcept override;
 };
