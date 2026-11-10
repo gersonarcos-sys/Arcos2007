@@ -10,7 +10,7 @@ class Moto : public Vehiculo {
     void setCilindraje(int cilindraje);
     int getCilindraje() const;
     bool esAltoCilindraje() const;
-    string getTipo() const;
-    string Info() const;
-    int cobrar() const;
+    string getTipo() const override;
+    string info() const override;
+    int cobrar() const override;
 };

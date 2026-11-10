@@ -18,7 +18,7 @@ bool Moto::esAltoCilindraje() const { return cilindraje > 400; }
 string Moto::getTipo() const { return "Moto"; }
 
 string Moto::info() const {
-     return Vehiculo::info() + " | Cilindraje: " + cilindraje; 
+    return Vehiculo::info(); 
 }
 
 int Moto::cobrar() const {

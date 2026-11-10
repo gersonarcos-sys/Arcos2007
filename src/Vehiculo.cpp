@@ -2,6 +2,7 @@
 #include "../include/Excepciones.h"
 #include "../include/Propietario.h"
 #include "../include/Carro.h"
+#include "../include/Moto.h"
 
 Vehiculo::Vehiculo(string placa) : placa(placa), propietario(nullptr) {
     if (placa.empty()) {
@@ -24,8 +25,13 @@ string Vehiculo::info() const {
 ostream &operator<<(ostream &os, Vehiculo &vehiculo) {
     os << "[" << vehiculo.getTipo() << "] " << vehiculo.info();
     if (vehiculo.getTipo() == "Carro") {
-        Carro &c = (Carro&)vehiculo; 
-        os << " | Pasajeros: " << c.getPasajeros();
+        Carro &car = (Carro&)vehiculo; 
+        os << " | Pasajeros: " << car.getPasajeros();
+    }
+    else if (vehiculo.getTipo() == "Moto") {
+        Moto &mot = (Moto&)vehiculo;
+        string altoCilin = mot.esAltoCilindraje() ? "Si" : "No";
+        os << " | Cilindraje: " << mot.getCilindraje() << "cc (Alto Cilindraje: " << altoCilin << ")";
     }
      os << " | Valor Cobro: $" << vehiculo.cobrar();
     return os;
