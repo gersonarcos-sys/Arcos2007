@@ -1,13 +1,16 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <Propietario.h>
 
 using namespace std;
+
+class Propietario std;
 
 class Vehiculo{
 protected:
  string placa;
- Propietario propietario;
+ Propietario* propietario;
 
 public:
 Vehiculo(string placa);

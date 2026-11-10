@@ -1,5 +1,7 @@
 #include "../include/Vehiculo.h"
 #include "../include/Excepciones.h"
+#include "../include/Propietario.h"
+#include "../include/Carro.h"
 
 Vehiculo::Vehiculo(string placa) : placa(placa), propietario(nullptr) {
     if (placa.empty()) {
@@ -10,7 +12,7 @@ Vehiculo::Vehiculo(string placa) : placa(placa), propietario(nullptr) {
 Vehiculo::~Vehiculo() {}
 
 string Vehiculo::getPlaca() const { return placa; }
-void Vehiculo::setPlaca(string p) { placa = p; }
+void Vehiculo::setPlaca(string plac) { placa = plac; }
 
 void Vehiculo::setPropietario(Propietario* prop) { propietario = prop; }
 Propietario* Vehiculo::getPropietario() const { return propietario; }
@@ -18,6 +20,15 @@ Propietario* Vehiculo::getPropietario() const { return propietario; }
 string Vehiculo::info() const {
     string propInfo = (propietario != nullptr) ? "Con dueño" : "Sin Propietario";
     return "Placa: " + placa;
+}
+ostream &operator<<(ostream &os, Vehiculo &vehiculo) {
+    os << "[" << vehiculo.getTipo() << "] " << vehiculo.info();
+    if (vehiculo.getTipo() == "Carro") {
+        Carro &c = (Carro&)vehiculo; 
+        os << " | Pasajeros: " << c.getPasajeros();
+    }
+     os << " | Valor Cobro: $" << vehiculo.cobrar();
+    return os;
 }
 
 

@@ -3,7 +3,7 @@
 
 using namespace std;
 
-class Operador : Persona {
+class Operador : public Persona {
 private:
  string codigoEmpleado;
 public:

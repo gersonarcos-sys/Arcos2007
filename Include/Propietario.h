@@ -3,7 +3,7 @@
 
 using namespace std;
 
-class Propietario : Persona {
+class Propietario : public Persona {
 private:
  bool vecino;
 
