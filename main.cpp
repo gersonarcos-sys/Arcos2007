@@ -72,6 +72,79 @@ int main() {
     cout << *cam1 << '\n' << endl;
     vehiculosMundo.push_back(cam1);
 
+        // Caso 8
+    cout << "Caso 8: Crear un carro con la placa vacia." << endl;
+    try {
+        Carro* carroError = new Carro("", 4);
+        delete carroError;
+    } catch (const PlacaInvalidaException &e) {
+        cout << "Capturada con exito en main: " << e.what() << endl;
+    }
+    cout << "\n";
+
+    // Caso 9
+    cout << "Caso 9: Crear un camion de 1 eje." << endl;
+    try {
+        Camion* camionError = new Camion("ERR123", 1);
+        delete camionError;
+    } catch (const DatosInvalidosException &e) {
+        cout << "Capturada con exito en main: " << e.what() << endl;
+    }
+    cout << "\n";
+
+    // Caso 10
+    cout << "Caso 10: Pasan por la caseta los vehiculos de los casos 2, 3, 5 y 7." << endl;
+    Caseta* caseta = new Caseta();
+    caseta->asignarOperador(op1);
+
+    for (int i = 0; i < vehiculosMundo.size(); i++) {
+        caseta->registrarPaso(vehiculosMundo[i]);
+    }
+
+    cout << "   Recaudo Total de la Caseta: $" << caseta->getTotalRecaudado() << endl;
+    cout << "   Conteo de vehiculos pasados:" << endl;
+    cout << "   Carros: " << caseta->getContadorVehiculos("Carro") << endl;
+    cout << "   Motos: " << caseta->getContadorVehiculos("Moto") << endl;
+    cout << "   Buses: " << caseta->getContadorVehiculos("Bus") << endl;
+    cout << "   Camiones: " << caseta->getContadorVehiculos("Camion") << "\n" << endl;
+
+    int recaudoExacto = caseta->getTotalRecaudado();
+
+    // Caso 11
+    cout << "Caso 11: El operador declara exactamente el recaudo del caso 10." << endl;
+    try {
+        caseta->finalizarJornada(recaudoExacto);
+        cout << "Resultado: La caja cuadra correctamente sin novedades." << endl;
+    } catch (const DescuadreCajaException &e) {
+        cout << e.what() << endl;
+    }
+    cout << "\n";
+
+    // Caso 12
+    cout << "Caso 12: El operador declara 1000 menos que el recaudo del caso 10." << endl;
+    try {
+        caseta->finalizarJornada(recaudoExacto - 1000);
+    } catch (const DescuadreCajaException &e) {
+        cout << "Capturada con exito en main: " << e.what() << endl;
+    }
+    cout << "\n";
+
+    // Caso 13
+    cout << "Caso 13: Liberacion ordenada de memoria dinamica." << endl;
+    delete caseta;
+
+    for (int i = 0; i < vehiculosMundo.size(); i++) {
+        delete vehiculosMundo[i];
+    }
+
+    for (int i = 0; i < personasMundo.size(); i++) {
+        delete personasMundo[i];
+    }
+
+    cout << "\n--- SEE YOU LATER ---" << endl;
+
+
+
     return 0;
 }
 

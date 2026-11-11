@@ -5,7 +5,7 @@
 
 using namespace std;
 
-class Propietario std;
+class Propietario ;
 
 class Vehiculo{
 protected:
@@ -21,6 +21,6 @@ void setPlaca(string placa);
 void setPropietario(Propietario* prop);
 Propietario* getPropietario() const;
 virtual string info()const;
-virtual int cobrar() const; 
+virtual int cobrar() const = 0; 
 };
 ostream &operator<<(ostream &os, Vehiculo &Vehiculo);
