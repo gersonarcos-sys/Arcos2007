@@ -19,3 +19,11 @@ public:
  DatosInvalidosException(string msj);
  const char* what() const noexcept override;
 };
+
+class DescuadreCajaException : public exception {
+private:
+    string msj;
+public:
+    DescuadreCajaException(string msj);
+    const char* what() const noexcept override;
+};
