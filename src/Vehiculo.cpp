@@ -3,6 +3,9 @@
 #include "../include/Propietario.h"
 #include "../include/Carro.h"
 #include "../include/Moto.h"
+#include "../include/Bus.h"
+#include "../include/Camion.h"
+
 
 Vehiculo::Vehiculo(string placa) : placa(placa), propietario(nullptr) {
     if (placa.empty()) {
@@ -33,8 +36,17 @@ ostream &operator<<(ostream &os, Vehiculo &vehiculo) {
         string altoCilin = mot.esAltoCilindraje() ? "Si" : "No";
         os << " | Cilindraje: " << mot.getCilindraje() << "cc (Alto Cilindraje: " << altoCilin << ")";
     }
+    else if (vehiculo.getTipo() == "Bus") {
+    Bus &bs = (Bus&)vehiculo;
+    os << " | Puestos: " << bs.getPuestos(); 
+    }
+    else if (vehiculo.getTipo() == "Camion"){
+        Camion &cam = (Camion&)vehiculo;
+        os << " | Ejes : " << cam.getEjes();
+    }
      os << " | Valor Cobro: $" << vehiculo.cobrar();
     return os;
+    
 }
 
 
