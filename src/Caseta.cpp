@@ -19,6 +19,9 @@ void Caseta::asignarOperador(Operador* op) {
 }
 
 void Caseta::registrarPaso(Vehiculo* v) {
+     if (v == nullptr) {
+        return;
+    }
     int cobro = v->cobrar();
     totalRecaudado += cobro;
 
