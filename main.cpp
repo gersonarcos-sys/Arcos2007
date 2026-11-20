@@ -10,6 +10,8 @@
 #include "include/Bus.h"
 #include "include/Camion.h"
 #include "include/Caseta.h"
+#include "include/Ambulancia.h"
+#include "include/Emergencia.h"
 
 using namespace std;
 
@@ -140,6 +142,23 @@ int main() {
     for (int i = 0; i < personasMundo.size(); i++) {
         delete personasMundo[i];
     }
+
+// Caso 14: Prueba de Ambulancia (crear, cobrar sin emergencia, cobrar en emergencia y destruir)
+
+    cout << "\nCaso 14: Creacion y prueba de Ambulancia" << endl;
+    Ambulancia* ambulancia = new Ambulancia("AMB123", "Urgencia 1", "Emergencia medica");
+
+    cout << "1) Ambulancia SIN emergencia" << endl;
+    cout << *ambulancia << endl;
+
+    cout << "2) Ambulancia EN emergencia" << endl;
+    ambulancia->setEmergencia(true);
+    cout << *ambulancia << endl;
+
+    cout << "3) Destruyendo ambulancia:" << endl;
+    delete ambulancia;
+
+
 
     cout << "\n--- SEE YOU LATER ---" << endl;
 
